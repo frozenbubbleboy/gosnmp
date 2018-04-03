@@ -91,7 +91,7 @@ func (x *GoSNMP) decodeValue(data []byte, msg string) (retVal *variable, err err
 		x.logPrint("decodeValue: type is OctetString")
 		length, cursor := parseLength(data)
 		retVal.Type = OctetString
-		retVal.Value = []byte(data[cursor:length])
+		retVal.Value = net.HardwareAddr([]byte(data[cursor:length]))
 	case Null:
 		// 0x05
 		x.logPrint("decodeValue: type is Null")
